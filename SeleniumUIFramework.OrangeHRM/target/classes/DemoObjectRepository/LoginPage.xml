@@ -1,0 +1,7 @@
+<WebElement>
+    <LoginPage>
+        <UsernameField>name:username</UsernameField>
+        <PasswordField>name:password</PasswordField>
+        <loginButton>css:[type='submit']</loginButton>
+    </LoginPage>
+</WebElement>
