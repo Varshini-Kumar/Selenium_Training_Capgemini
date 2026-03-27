@@ -1,7 +1,0 @@
-package com.demo.seleniumgrid.launchingbrowser;
-
-public class LaunchingChrome {
-public static void main(String[] args) {
-	
-}
-}
