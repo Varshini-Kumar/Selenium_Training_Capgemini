@@ -1,0 +1,22 @@
+package Demo;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import com.orangehrm.seleniumuiframework.object_repository.LoginPage;
+import com.orangehtm.seleniumuiframework.genericutility.WebDriverUtility;
+
+public class CaptureScreenshot {
+	@Test
+	public void screenShot() {
+		WebDriver driver = new ChromeDriver();
+		WebDriverUtility wu = new WebDriverUtility(driver);
+		LoginPage lp = new LoginPage(driver);
+		wu.configMaximizedBrowser();
+		wu.waitForElementsToLoad(20);
+		wu.navigateToApplication("");
+		lp.login("Admin", "admin123");
+
+	}
+}

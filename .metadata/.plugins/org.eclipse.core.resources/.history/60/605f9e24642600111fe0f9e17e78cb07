@@ -1,0 +1,31 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
+
+public class WebDriverUtility {
+	WebDriver driver;
+//Manage
+//Navigate
+//timeouts
+//explicit wait
+//popups
+//iFrame
+	public void configMaximizedBrowser() {
+		driver.manage().window().maximize();
+		
+	}
+	public void configMinimizedBrowser() {
+		driver.manage().window().minimize();;
+		
+	}
+	public void configFullScreenBrowser() {
+		driver.manage().window().minimize();;
+		
+	}
+	public Dimension fetchSize() {
+		Dimension dimension = driver.manage().window().getSize();
+		return dimension;
+	}
+
+	}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;locator.XpathPractice2&apos; to &apos;XpathByTextFunction&apos;&#x0D;&#x0A;- Original project: &apos;SeleniumTraining&apos;&#x0D;&#x0A;- Original element: &apos;locator.XpathPractice2&apos;&#x0D;&#x0A;- Renamed element: &apos;locator.XpathByTextFunction&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;XpathPractice2&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/&lt;locator{XpathPractice2.java[XpathPractice2" matchStrategy="1" name="XpathByTextFunction" qualified="false" references="true" similarDeclarations="false" stamp="1772095884916" textual="false" version="1.0"/>
+</session>

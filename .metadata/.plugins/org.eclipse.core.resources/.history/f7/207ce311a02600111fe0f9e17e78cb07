@@ -1,0 +1,14 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import java.util.Random;
+
+public class JavaUtility {
+//generate random number
+public int getRandomNumber(int range)
+Random random = new Random();
+int randomNumberInRange = random.nextInt(range);
+return randomNumberInRange;
+}
+//Generate Current Date
+public String getCurrentDate()
+}

@@ -1,0 +1,49 @@
+package com.orangehrm.seleniumuiframwework.recruitment;
+
+import java.io.IOException;
+import java.time.Duration;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import com.orangehrm.seleniumuiframework.object_repository.AddVacancyPage;
+import com.orangehrm.seleniumuiframework.object_repository.DashBoardPage;
+import com.orangehrm.seleniumuiframework.object_repository.RecruitmentPage;
+import com.orangehrm.seleniumuiframework.object_repository.VacanciesPage;
+import com.orangehtm.seleniumuiframework.genericutility.ActionsHelper;
+import com.orangehtm.seleniumuiframework.genericutility.BaseClass;
+import com.orangehtm.seleniumuiframework.genericutility.ExcelUtility;
+
+public class CreateVacancyTest extends BaseClass {
+// public 
+	// WebDriver driver;
+
+	@Test
+	public void addVacancy() throws InterruptedException, EncryptedDocumentException, IOException {
+		DashBoardPage dsp = new DashBoardPage(driver);
+		RecruitmentPage rp = new RecruitmentPage(driver);
+		VacanciesPage vp = new VacanciesPage(driver);
+		AddVacancyPage addvp = new AddVacancyPage(driver);
+		Actions act = new Actions(driver);
+		ActionsHelper ah = new ActionsHelper(driver);
+		ExcelUtility eu = new ExcelUtility();
+
+		dsp.clickRecuitment();
+//vacancies
+		rp.clickVacancieslink();
+//vacancy link
+		vp.clickAddbtn();
+//recruitment 
+		//addvp.setVacancyNameTextField("v_001");
+		addvp.setVacancyNameTextField(eu.getDataFromSingleCell(1, 1));
+		ah.navigateDownDropdown(addvp.getJobTitle(), 3, 2);
+		addvp.setDescriptionTextField("A long description fot the requirement");
+		ah.scrollDownAutoSuggestion(addvp.getHiringManagerTextField(), "a", 4, 1);
+		addvp.setNoOfPositionsTextField("15");
+		addvp.clickSavebtn();
+
+	}
+}

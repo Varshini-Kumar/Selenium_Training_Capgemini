@@ -1,0 +1,66 @@
+package com.orangehrm.seleniumuiframework_generic_utility;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+public class ExcelUtility {
+	Workbook wb;
+	Sheet sheet;
+	//load excel file
+	public void loadExcelFile(String filePath,String sheetName) throws EncryptedDocumentException, IOException {
+		FileInputStream fis=new FileInputStream(filePath);
+		wb=WorkbookFactory.create(fis);
+		sheet=wb.getSheet(sheetName);
+	}
+	//read
+public String getDataFromSingleCell(int rowNo,int cellNo) throws EncryptedDocumentException, IOException {
+	
+	String data=sheet.getRow(rowNo).getCell(cellNo).getStringCellValue();
+	if(data=="") {
+		System.out.println("No data present in the given cell");
+	}
+	wb.close();
+	return data;
+}
+//write
+public void writeDataInTheCell(String filePath,int rowNo,int cellNo, String data) throws EncryptedDocumentException, IOException {
+	Row row=sheet.getRow(rowNo);
+	
+	if(row==null) {
+		row=sheet.createRow(rowNo);
+	}
+	Cell cell= row.getCell(cellNo);
+	if(cell==null) {
+		cell=row.createCell(cellNo);
+		
+	}
+	cell.setCellValue(data);
+	FileOutputStream fos=new FileOutputStream(filePath);
+	wb.write(fos);
+	fos.close();
+
+}
+//Get entire data using Dataprovider
+	public Object[][] getDataFromTheExcelSheet() throws IOException{
+		int rowNo = sheet.getLastRowNum();
+		int colNo = sheet.getRow(0).getLastCellNum();
+		
+		Object[][] data = new Object[rowNo][colNo];
+		
+		for (int i = 0; i <= rowNo; i++) {
+			for (int j = 0; j < colNo; j++) {
+				data[i-1][j] = getDataFromSingleCell(i, j);
+			}
+		}
+		
+		return data;
+	}
+}

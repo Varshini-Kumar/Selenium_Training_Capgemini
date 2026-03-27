@@ -1,0 +1,19 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class ActionsHelper {
+
+    WebDriver driver;
+    Actions act;
+
+    public ActionsHelper(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    // Move to element and click
+    public void clickOnElement(WebElement element) {
+        act.moveToElement(element).click().perform();
+    }
+}

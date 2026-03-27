@@ -1,0 +1,15 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
+public class FileUtility {
+public String getPropertyKeyValue(String key) throws IOException {
+	FileInputStream file = new FileInputStream("./src/test/resources/OrangeHrm_Common_Data/common_data_properties.properties");
+	Properties prop = new Properties();
+	prop.load(file);
+	Strin
+}
+}

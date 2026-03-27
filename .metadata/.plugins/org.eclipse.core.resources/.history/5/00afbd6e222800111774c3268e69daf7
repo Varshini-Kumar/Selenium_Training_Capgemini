@@ -1,0 +1,8 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+public class ScreenShotUtility {
+public String captureFullPage() {
+	return null;
+	
+}
+}

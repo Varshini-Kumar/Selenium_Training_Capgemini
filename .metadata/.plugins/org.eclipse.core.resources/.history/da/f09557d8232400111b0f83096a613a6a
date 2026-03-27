@@ -1,0 +1,9 @@
+package com.demo.seleniumgrid.launchingbrowser;
+
+public class LaunchingFireFox {
+
+	public static void main(String[] args) {
+
+	}
+
+}

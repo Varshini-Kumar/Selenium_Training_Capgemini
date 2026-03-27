@@ -1,0 +1,61 @@
+package com.orangehrm.seleniumuiframework.object_repository;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+
+
+public class DashBoardPage {
+	WebDriver driver;
+	public DashBoardPage(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+
+	//Pim - link navigate
+	@FindBy(xpath = "//span[. = 'PIM']")
+	private WebElement pim_module;
+	
+	//logout - dropdown
+	@FindBy(className = "oxd-userdropdown-icon")
+	private WebElement logout_dropdown;
+	
+	@FindBy(xpath="//span[.='Recruitment']")
+	private WebElement recuitment;
+	
+	@FindBy(xpath="//a[@href='/web/index.php/auth/logout']")
+	private WebElement logout;
+	
+	public 
+
+	public WebElement getRecuitment() {
+		return recuitment;
+	}
+
+	public void clickRecuitment() {
+		getRecuitment().click();
+	}
+
+	//Getters and setters of Pim module
+	public WebElement getPim_module() {
+		return pim_module;
+	}
+
+	public void clickPim_module() {
+		getPim_module().click();
+	}
+
+	//Getters and setters of Logout_dropdown
+	public WebElement getLogout_dropdown() {
+		return logout_dropdown;
+	}
+
+	public void setLogout_dropdown() {
+		getLogout_dropdown().click();
+	}
+	
+	
+	
+	
+}

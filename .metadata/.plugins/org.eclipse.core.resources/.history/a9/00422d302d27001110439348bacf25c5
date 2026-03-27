@@ -1,0 +1,103 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import org.testng.annotations.BeforeSuite;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+
+import com.orangehrm.seleniumuiframework.object_repository.LoginPage;
+
+public class BaseClass {
+	public WebDriver driver;
+	FileInputStream file;
+	Properties prop;
+	private String Browser;
+	FileUtility fiu = new FileUtility();
+	WebDriverUtility wdu = new WebDriverUtility(driver);
+	LoginPage lp;
+
+	@BeforeSuite
+	public void beforeSuit() {
+		Reporter.log("---Exceuting before Suite---", true);
+	}
+
+	@BeforeTest
+	public void beforeTest() {
+		Reporter.log("---Exceuting before Test---", true);
+	}
+    @Parameters("Browser")
+	@BeforeClass(groups = {"Regression","Smoke"})
+	public void beforeClass() throws IOException {
+		Reporter.log("---Exceuting before Class---", true);
+		Browser = fiu.getPropertyKeyValue("browser");
+		if (Browser.contains("chrome")) {
+			driver = new ChromeDriver();
+		} else if (Browser.contains("edge")) {
+			driver = new EdgeDriver();
+		} else if (Browser.contains("firefox")) {
+			driver = new FirefoxDriver();
+		}
+		wdu.configMaximizedBrowser();
+		wdu.waitForElementsToLoad(30);
+		
+	}
+
+	@BeforeMethod
+	public void beforeMethod() throws IOException {
+
+		Reporter.log("---Exceuting before Method---", true);
+
+		String URL = fiu.getPropertyKeyValue("url");
+		String ValidUserName = fiu.getPropertyKeyValue("username");
+		String ValidPassword = fiu.getPropertyKeyValue("password");
+
+		// login
+		wdu.navigateToApplication(URL);
+		 = new LoginPage(driver);
+		lp.login(ValidUserName, ValidPassword);
+
+	}
+
+//	@Test
+//	public void login() {
+//	Reporter.log("Executing test",true);
+//	}
+	@AfterMethod
+	public void afterMethod() {
+		Reporter.log("---Logging Out---", true);
+	}
+
+	@AfterClass
+	public void afterClass() {
+		Reporter.log("---Exceuting after Class---", true);
+		driver.quit();
+	}
+
+	@AfterTest
+	public void afterTest() {
+		Reporter.log("---Exceuting after Test---", true);
+	}
+
+	@AfterSuite
+	public void afterSuit() {
+		Reporter.log("---Exceuting after Suite---", true);
+	}
+
+}

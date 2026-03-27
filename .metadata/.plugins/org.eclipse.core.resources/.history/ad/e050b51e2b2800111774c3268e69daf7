@@ -1,0 +1,41 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+public class ListenersImplementation  implements ITestListener{
+
+	ExtentReports extent = new ExtentReports();
+	ExtentSparkReporter spark = new ExtentSparkReporter("./Reports/test_result.html");
+	ExtentTest test;
+	
+
+	@Override
+	public void onTestStart(ITestResult result) {
+		test = extent.createTest(result.getMethod().getMethodName());
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		test.pass("Test Status : Pass");
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		test.fail("Test Status : Fail");
+		test.fail(result.getThrowable());
+		ScreenShotUtility sc = new ScreenShotUtility(null);
+		
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		// TODO Auto-generated method stub
+		ITestListener.super.onTestSkipped(result);
+	}
+
+}

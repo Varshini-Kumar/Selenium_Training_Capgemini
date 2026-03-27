@@ -1,0 +1,66 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
+
+public class WebDriverUtility {
+	WebDriver driver;
+
+//Manage
+//Navigate
+//timeouts
+//explicit wait
+//popups
+//iFrame
+	public void configMaximizedBrowser() {
+		driver.manage().window().maximize();
+
+	}
+
+	public void configMinimizedBrowser() {
+		driver.manage().window().minimize();
+
+	}
+
+	public void configFullScreenBrowser() {
+		driver.manage().window().minimize();
+
+	}
+
+	public Dimension fetchBrowserSize() {
+		Dimension dimension = driver.manage().window().getSize();
+		return dimension;
+	}
+
+	public void configBrowserSize(int width,int height) {
+         driver.manage().window().setSize(new Dimension(width, height));
+	}
+	//get position
+	public Point getBrowserPosition() {
+		Point pos = driver.manage().window().getPosition();
+		return pos;
+	}
+	//set position
+	public void setBrowserPosition(int x,int y) {
+		driver.manage().window().setPosition(new Point(x,y));
+	}
+	//navigate
+	public void navigateToApplication(String fullurl) {
+		driver.navigate().to(fullurl);
+	}
+	//forward
+	public void navigateForward() {
+		driver.navigate().back();
+	}
+	//backward
+	public void navigatetoBackward() {
+		driver.navigate().back();
+	}
+	//refresh
+	public void refreshCurrentPage() {
+		driver.navigate().refresh();
+	}
+	//Get
+	
+}

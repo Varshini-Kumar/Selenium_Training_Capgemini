@@ -1,0 +1,87 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.*;
+
+public class ExcelUtility {
+
+    Workbook wb;
+    Sheet sheet;
+
+    // Load excel file
+    public void loadExcelFile(String filePath, String sheetName)
+            throws EncryptedDocumentException, IOException {
+
+        FileInputStream fis = new FileInputStream(filePath);
+        wb = WorkbookFactory.create(fis);
+        sheet = wb.getSheet(sheetName);
+    }
+
+    // Read data (UPDATED as per your image)
+    public String getDataFromSingleCell(int rowNo, int cellNo)
+            throws EncryptedDocumentException, IOException {
+
+        CellType dataType = sheet.getRow(rowNo).getCell(cellNo).getCellType();
+        String value = "";
+
+        if (dataType == CellType.STRING) {
+            value = sheet.getRow(rowNo).getCell(cellNo).getStringCellValue();
+        } 
+        else if (dataType == CellType.NUMERIC) {
+            double val = sheet.getRow(rowNo).getCell(cellNo).getNumericCellValue();
+            int intVal = (int) val;
+            value = String.valueOf(intVal);
+        }
+
+        // Fixed string comparison
+        if (value.equals("")) {
+            System.out.println("No data present in the given cell");
+        }
+
+        return value;
+    }
+
+    // Write data
+    public void writeDataInTheCell(String filePath, int rowNo, int cellNo, String data)
+            throws EncryptedDocumentException, IOException {
+
+        Row row = sheet.getRow(rowNo);
+
+        if (row == null) {
+            row = sheet.createRow(rowNo);
+        }
+
+        Cell cell = row.getCell(cellNo);
+
+        if (cell == null) {
+            cell = row.createCell(cellNo);
+        }
+
+        cell.setCellValue(data);
+
+        FileOutputStream fos = new FileOutputStream(filePath);
+        wb.write(fos);
+        fos.close();
+    }
+
+    // Get entire data using DataProvider (FIXED loop)
+    public Object[][] getDataFromTheExcelSheet() throws IOException {
+
+        int rowNo = sheet.getLastRowNum();
+        int colNo = sheet.getRow(0).getLastCellNum();
+
+        Object[][] data = new Object[rowNo][colNo];
+
+        for (int i = 1; i <= rowNo; i++) {   // start from 1 (skip header)
+            for (int j = 0; j < colNo; j++) {
+                data[i - 1][j] = getDataFromSingleCell(i, j);
+            }
+        }
+
+        return data;
+    }
+}

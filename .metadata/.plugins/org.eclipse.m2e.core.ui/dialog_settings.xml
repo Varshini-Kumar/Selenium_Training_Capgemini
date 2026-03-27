@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Users\91934\OneDrive\Desktop\cap_selenium\TestNgPractice\src\test\java\practice\TestPractice.java"/>
+			<item value="C:\Users\91934\OneDrive\Desktop\cap_selenium\SeleniumTraining\src\test\java\practice\ActionsClass.java"/>
+			<item value="C:\Users\91934\OneDrive\Desktop\cap_selenium\SeleniumPopup\src\test\java\handlingsSeleniumPopups\OrangeHrmTc2.java"/>
+			<item value="C:\Users\91934\OneDrive\Desktop\cap_selenium\SeleniumSelectClass\src\test\java\handlingDropDowns"/>
+			<item value="C:\Users\91934\OneDrive\Desktop\cap_selenium\SeleniumTraining\src\test\java\locator\OrangeHrm.java"/>
+			<item value="C:\Users\91934\OneDrive\Desktop\cap_selenium\SeleniumWebElementAPI\src\test\java\webelement\DropDown.java"/>
+			<item value="C:\Users\91934\OneDrive\Desktop\cap_selenium\navigation_api\src\test\java\navigation\PractingNavigation.java"/>
+			<item value="C:\Users\91934\OneDrive\Desktop\cap_selenium\SeleniumTraining\src\test\java\relativeloactor\GetandSetSize.java"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="All Catalogs"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="com.capgemini.training.griddemo"/>
+			<item value="com.capgemini.seleniumuiframework"/>
+			<item value="com.capgemini.training"/>
+		</list>
+		<list key="name">
+			<item value="navigation_api"/>
+		</list>
+		<list key="artifactId">
+			<item value="Selenium-grid"/>
+			<item value="SeleniumUIFramework.OrangeHRM"/>
+			<item value="TestNgPractice"/>
+			<item value="SeleniumJavascriptExecutor"/>
+			<item value="SeleniumSynchronization"/>
+			<item value="SeleniumRelativeLocators"/>
+			<item value="SeleniumLocators"/>
+			<item value="SeleniumPopup"/>
+			<item value="SeleniumSelectClass"/>
+			<item value="SeleniumInteroogationAPI"/>
+			<item value="SeleniumWebElementAPI"/>
+			<item value="navigation_api"/>
+			<item value="SeleniumTraining"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

@@ -1,0 +1,9 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import java.util.Random;
+
+public class JavaUtility {
+//generate random number
+Random random = new Random();
+int randomNumber
+}

@@ -1,0 +1,41 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import java.time.Duration;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+
+public class ActionsHelper {
+
+	WebDriver driver;
+	Actions act;
+
+	public ActionsHelper(WebDriver driver) {
+		this.driver = driver;
+		this.act = new Actions(driver);
+	}
+
+	// Move to element and click
+	public void clickOnElement(WebElement element) {
+		act.moveToElement(element).click().perform();
+	}
+
+	public void navigateDownDropdown(WebElement element, int downArrowIndex,long timeInSec) {
+		act.sendKeys(element).pause(Duration.ofSeconds(timeInSec)).perform();
+		for(int i=1;i<=downArrowIndex;i++) {
+			act.keyDown(Keys.DOWN).perform();
+		}
+		act.keyDown(Keys.ENTER).keyUp(Keys.DOWN).perform();
+		
+	}
+	public void scrollDownAutoSuggestion(WebElement element,String text,long timeInSec,int downArrowIndex) {
+		act.sendKeys(element,text).pause(Duration.ofSeconds(timeInSec)).perform();
+		for(int i=1;i<=downArrowIndex;i++) {
+			act.keyDown(Keys.DOWN).perform();
+		}
+		act.keyDown(Keys.ENTER).keyUp(Keys.DOWN).perform();
+	}
+}

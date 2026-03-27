@@ -1,0 +1,42 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+public class ExcelUtility {
+	//read
+public String getDataFromCell(String filePath, String sheetName,int rowNo,int cellNo,String value) throws EncryptedDocumentException, IOException {
+	FileInputStream fis= new FileInputStream(filePath);
+	Workbook wb= WorkbookFactory.create(fis);
+	String data=wb.getSheet(sheetName).getRow(rowNo).getCell(cellNo).getStringCellValue();
+	wb.close();
+	return data;
+}//write
+public void writeDataInTheCell(String filePath, String sheetName,int rowNo,int cellNo, String data) throws EncryptedDocumentException, IOException {
+	FileInputStream fis= new FileInputStream(filePath);
+	Workbook wb= WorkbookFactory.create(fis);
+	Sheet sheet=wb.getSheet(sheetName);
+	Row row=sheet.getRow(rowNo);
+	
+	if(row==null) {
+		row=sheet.createRow(rowNo);
+	}
+	Cell cell= row.getCell(cellNo);
+	if(cell==null) {
+		cell=row.createCell(cellNo);
+		
+	}
+	cell.setCellValue(data);
+	FileOutputStream fos=new FileOutputStream(filePath);
+	wb.write(fos);
+	fos.close();
+
+}
+}

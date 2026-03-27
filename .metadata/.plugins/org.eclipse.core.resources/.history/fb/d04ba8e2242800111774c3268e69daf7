@@ -1,0 +1,50 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.io.FileHandler;
+
+import com.orangehrm.seleniumuiframework.object_repository.DashBoardPage;
+
+public class ScreenShotUtility {
+	public WebDriver driver;
+	DashBoardPage dsp = new DashBoardPage(driver);
+
+	public String captureScreenShot(WebDriver driver, String testName) throws IOException {
+		String timestamp = new SimpleDateFormat("yyyy-mm-dd[hh-mm-ss]").format(new Date());
+		String path = System.getProperty("./Reports/dashboard " + timestamp + ".png");
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		ts.getScreenshotAs(OutputType.FILE);
+		try {
+			File temp = ts.getScreenshotAs(OutputType.FILE);
+			File perm = new File(path);
+			FileHandler.copy(temp, perm);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return path;
+
+	}
+		public String captureScreenShot(WebElement element, String elementName) throws IOException {
+			String timestamp = new SimpleDateFormat("yyyy-mm-dd[hh-mm-ss]").format(new Date());
+			String path = System.getProperty("./Reports/recruitmentLink " + timestamp + ".png");
+			WebElement recruitmentLink = dsp.getRecuitment();
+			try {
+				File tempsrc = recruitmentLink.getScreenshotAs(OutputType.FILE);
+				File permtrg = new File(path);
+				FileHandler.copy(tempsrc, permtrg);			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return path;
+
+		}
+	
+}

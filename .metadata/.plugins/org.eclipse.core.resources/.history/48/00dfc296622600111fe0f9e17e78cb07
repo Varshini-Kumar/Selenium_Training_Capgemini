@@ -1,0 +1,11 @@
+package com.orangehtm.seleniumuiframework.genericutility;
+
+public class WebDriverUtility {
+//Manage
+//Navigate
+//timeouts
+//explicit wait
+//popups
+//iFrame
+	
+	}
